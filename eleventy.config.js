@@ -1,4 +1,20 @@
+import { HtmlBasePlugin } from "@11ty/eleventy";
+import markdownIt from "markdown-it";
+
+const md = markdownIt({ html: true, typographer: true });
+
 export default function (eleventyConfig) {
+  // Skriver pathPrefix ind i alle links i den færdige HTML. Det betyder at
+  // helt almindelige markdown-links som [mayonnaise](/opskrifter/mayonnaise/)
+  // også virker når siden ligger på brugernavn.github.io/opskrifter/.
+  eleventyConfig.addPlugin(HtmlBasePlugin);
+
+  // Tillader markdown midt i en frontmatter-streng — fx et link på en
+  // ingrediens. renderInline pakker ikke resultatet ind i <p>.
+  eleventyConfig.addFilter("markdownInline", (tekst) =>
+    md.renderInline(String(tekst ?? ""))
+  );
+
   // Billeder og CSS kopieres råt over i _site/
   eleventyConfig.addPassthroughCopy("src/billeder");
   eleventyConfig.addPassthroughCopy("src/css");

@@ -61,12 +61,18 @@ ingredienser:
 
 ### Links mellem opskrifter
 
-To måder:
+Tre måder, alle med almindelige rod-relative stier:
 
 - `relaterede:` i frontmatter tager en liste af **filnavne uden `.md`** og
   viser dem som links nederst på siden. Et navn der ikke findes, springes over.
 - Midt i teksten: helt almindelige markdown-links,
   `[mayonnaise](/opskrifter/mayonnaise/)`.
+- **På en ingrediens:** markdown virker også inde i `ingredienser:`, så
+  `- 150 g [mayonnaise](/opskrifter/mayonnaise/)` bliver til et klikbart link i
+  ingredienslisten.
+
+Du skal ikke tænke på `pathPrefix` nogen af stederne. `HtmlBasePlugin` skriver
+det ind i alle links i den færdige HTML, så skriv altid stien fra roden.
 
 ## Billeder
 

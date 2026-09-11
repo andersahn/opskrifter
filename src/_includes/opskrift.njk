@@ -15,7 +15,7 @@ layout: base.njk
     {% if tags %}
       <ul class="kategorier">
         {% for tag in tags %}
-          <li><a href="{{ ('/kategori/' + (tag | slugify) + '/') | url }}">{{ tag }}</a></li>
+          <li><a href="/kategori/{{ tag | slugify }}/">{{ tag }}</a></li>
         {% endfor %}
       </ul>
     {% endif %}
@@ -23,7 +23,7 @@ layout: base.njk
 
   {% if billede %}
     <figure class="opskrift-billede">
-      <img src="{{ billede | url }}" alt="{{ billedtekst or titel }}"
+      <img src="{{ billede }}" alt="{{ billedtekst or titel }}"
            width="1200" height="800" loading="lazy" decoding="async">
       {% if billedtekst %}<figcaption>{{ billedtekst }}</figcaption>{% endif %}
     </figure>
@@ -36,7 +36,7 @@ layout: base.njk
         {% for gruppe in ingredienser | grupper %}
           {% if gruppe.gruppe %}<h3>{{ gruppe.gruppe }}</h3>{% endif %}
           <ul>
-            {% for i in gruppe.liste %}<li>{{ i }}</li>{% endfor %}
+            {% for i in gruppe.liste %}<li>{{ i | markdownInline | safe }}</li>{% endfor %}
           </ul>
         {% endfor %}
       </aside>
@@ -54,7 +54,7 @@ layout: base.njk
         {% for slug in relaterede %}
           {% set anden = slug | opskriftBySlug %}
           {% if anden %}
-            <li><a href="{{ anden.url | url }}">{{ anden.data.titel }}</a></li>
+            <li><a href="{{ anden.url }}">{{ anden.data.titel }}</a></li>
           {% endif %}
         {% endfor %}
       </ul>

@@ -11,8 +11,8 @@ tags:
 # billede: /billeder/mayonnaise.webp
 # billedtekst: Færdig mayonnaise i en skål.
 # Filnavne (uden .md) på opskrifter der skal linkes til nederst:
-# relaterede:
-#   - aioli
+relaterede:
+  - burgerdressing
 ingredienser:
   - 2 æggeblommer (ca. 36 g), stuetemperatur
   - 5 g dijonsennep (1 tsk)
@@ -21,6 +21,18 @@ ingredienser:
   - 250 ml neutral olie, fx raps- eller solsikkeolie
   - 15-30 ml lunkent vand, til justering
 ---
+
+## Huskeregel
+
+**Én æggeblomme til én deciliter olie.** Det er det sikre udgangspunkt, og det
+skalerer lige op — fire blommer, fire dl. Vil du have mayonnaisen tykkere,
+hælder du bare mere olie i; opskriften her tager 2½ dl til to blommer og lander
+et stykke på den faste side.
+
+Men der er en grænse omkring halvanden dl pr. blomme. Mayonnaise er oliedråber
+holdt adskilt af vandet fra blommerne, og bliver oliemængden for stor, er der
+ikke vand nok tilbage imellem dem. Så stivner den og skiller. Derfra tynder du
+ud med vand i stedet for at piske mere olie i.
 
 ## Fremgangsmåde
 
@@ -37,6 +49,12 @@ ingredienser:
 4. **Tilsæt de første 50 ml olie dråbe for dråbe** under konstant piskning. Det
    er her emulsionen dannes, og det kan ikke gå for langsomt. Når blandingen er
    synligt tyknet og lysegul, er du i sikkerhed.
+
+   Det er hele opskriftens vigtige arbejde. Hver dråbe olie skal piskes i
+   stykker og pakkes ind i lecitin fra blommerne, mens der stadig er rigeligt
+   vand omkring den — og starter du langsomt nok, er det nærmest umuligt at få
+   den til at skille. Når bunden først står, er emulsionen robust, og resten af
+   olien kan gå væsentligt hurtigere.
 
 5. Hæld resten af olien i en tynd, jævn stråle, stadig under piskning. Bliver
    mayonnaisen så stiv at den er svær at piske, så spæd med 1 spsk lunkent vand

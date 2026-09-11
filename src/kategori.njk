@@ -16,9 +16,9 @@ eleventyComputed:
 <ul class="kort-gitter">
   {% for opskrift in collections[kategori] %}
     <li class="kort">
-      <a href="{{ opskrift.url | url }}">
+      <a href="{{ opskrift.url }}">
         {% if opskrift.data.billede %}
-          <img src="{{ opskrift.data.billede | url }}" alt=""
+          <img src="{{ opskrift.data.billede }}" alt=""
                width="1200" height="800" loading="lazy" decoding="async">
         {% else %}
           <span class="kort-billede-mangler" aria-hidden="true"></span>

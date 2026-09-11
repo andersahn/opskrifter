@@ -10,9 +10,9 @@ beskrivelse: Samling af opskrifter i metriske mål.
 <ul class="kort-gitter">
   {% for opskrift in collections.opskrifter %}
     <li class="kort">
-      <a href="{{ opskrift.url | url }}">
+      <a href="{{ opskrift.url }}">
         {% if opskrift.data.billede %}
-          <img src="{{ opskrift.data.billede | url }}" alt=""
+          <img src="{{ opskrift.data.billede }}" alt=""
                width="1200" height="800" loading="lazy" decoding="async">
         {% else %}
           <span class="kort-billede-mangler" aria-hidden="true"></span>
@@ -34,7 +34,7 @@ beskrivelse: Samling af opskrifter i metriske mål.
     <h2>Kategorier</h2>
     <ul class="kategorier">
       {% for tag in collections.kategorier %}
-        <li><a href="{{ ('/kategori/' + (tag | slugify) + '/') | url }}">{{ tag }}</a></li>
+        <li><a href="/kategori/{{ tag | slugify }}/">{{ tag }}</a></li>
       {% endfor %}
     </ul>
   </section>

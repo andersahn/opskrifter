@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{% if titel %}{{ titel }} – {{ site.navn }}{% else %}{{ site.navn }}{% endif %}</title>
     {% if beskrivelse %}<meta name="description" content="{{ beskrivelse }}">{% endif %}
-    <link rel="stylesheet" href="{{ '/css/style.css' | url }}">
+    <link rel="stylesheet" href="/css/style.css">
   </head>
   <body>
     <header class="sidehoved">
-      <a class="mærke" href="{{ '/' | url }}">{{ site.navn }}</a>
+      <a class="mærke" href="/">{{ site.navn }}</a>
       <nav>
-        <a href="{{ '/' | url }}">Alle opskrifter</a>
+        <a href="/">Alle opskrifter</a>
       </nav>
     </header>
 
