@@ -1,0 +1,63 @@
+---
+layout: base.njk
+---
+<article class="opskrift">
+  <header class="opskrift-hoved">
+    <h1>{{ titel }}</h1>
+    {% if beskrivelse %}<p class="manchet">{{ beskrivelse }}</p>{% endif %}
+
+    <dl class="fakta">
+      {% if tid %}<div><dt>Tid</dt><dd>{{ tid }}</dd></div>{% endif %}
+      {% if portioner %}<div><dt>Giver</dt><dd>{{ portioner }}</dd></div>{% endif %}
+      {% if sværhedsgrad %}<div><dt>Sværhedsgrad</dt><dd>{{ sværhedsgrad }}</dd></div>{% endif %}
+    </dl>
+
+    {% if tags %}
+      <ul class="kategorier">
+        {% for tag in tags %}
+          <li><a href="{{ ('/kategori/' + (tag | slugify) + '/') | url }}">{{ tag }}</a></li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  </header>
+
+  {% if billede %}
+    <figure class="opskrift-billede">
+      <img src="{{ billede | url }}" alt="{{ billedtekst or titel }}"
+           width="1200" height="800" loading="lazy" decoding="async">
+      {% if billedtekst %}<figcaption>{{ billedtekst }}</figcaption>{% endif %}
+    </figure>
+  {% endif %}
+
+  <div class="opskrift-krop">
+    {% if ingredienser %}
+      <aside class="ingredienser">
+        <h2>Ingredienser</h2>
+        {% for gruppe in ingredienser | grupper %}
+          {% if gruppe.gruppe %}<h3>{{ gruppe.gruppe }}</h3>{% endif %}
+          <ul>
+            {% for i in gruppe.liste %}<li>{{ i }}</li>{% endfor %}
+          </ul>
+        {% endfor %}
+      </aside>
+    {% endif %}
+
+    <div class="fremgangsmåde">
+      {{ content | safe }}
+    </div>
+  </div>
+
+  {% if relaterede %}
+    <section class="relaterede">
+      <h2>Se også</h2>
+      <ul>
+        {% for slug in relaterede %}
+          {% set anden = slug | opskriftBySlug %}
+          {% if anden %}
+            <li><a href="{{ anden.url | url }}">{{ anden.data.titel }}</a></li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+    </section>
+  {% endif %}
+</article>

@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="{{ site.sprog }}">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% if titel %}{{ titel }} – {{ site.navn }}{% else %}{{ site.navn }}{% endif %}</title>
+    {% if beskrivelse %}<meta name="description" content="{{ beskrivelse }}">{% endif %}
+    <link rel="stylesheet" href="{{ '/css/style.css' | url }}">
+  </head>
+  <body>
+    <header class="sidehoved">
+      <a class="mærke" href="{{ '/' | url }}">{{ site.navn }}</a>
+      <nav>
+        <a href="{{ '/' | url }}">Alle opskrifter</a>
+      </nav>
+    </header>
+
+    <main>
+      {{ content | safe }}
+    </main>
+
+    <footer class="sidefod">
+      <p>{{ site.navn }} — {{ site.undertitel }}</p>
+    </footer>
+  </body>
+</html>

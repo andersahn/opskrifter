@@ -1,0 +1,14 @@
+{
+  "name": "opskrifter",
+  "version": "1.0.0",
+  "description": "Statisk opskriftssamling bygget med Eleventy",
+  "scripts": {
+    "start": "eleventy --serve",
+    "build": "eleventy"
+  },
+  "type": "module",
+  "dependencies": {
+    "@11ty/eleventy": "^3.1.6"
+  },
+  "private": true
+}

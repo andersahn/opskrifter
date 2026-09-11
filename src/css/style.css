@@ -1,0 +1,393 @@
+/* ---------------------------------------------------------------
+   Farver og variable. Lys tilstand defineres på :root, mørk
+   overskriver kun de variable der skal skifte.
+   --------------------------------------------------------------- */
+:root {
+  --papir: #faf7f2;
+  --kort: #fffdfa;
+  --blæk: #26221d;
+  --blæk-dæmpet: #6b6459;
+  --streg: #e3dbcf;
+  --accent: #9a3b1e;
+  --accent-dæmpet: #f2e5df;
+
+  --bredde: 46rem;
+  --radius: 10px;
+
+  --skrift: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  --skrift-overskrift: "Iowan Old Style", "Palatino Linotype", Palatino,
+    Georgia, serif;
+
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --papir: #1a1816;
+    --kort: #232019;
+    --blæk: #ece6dd;
+    --blæk-dæmpet: #a49b8d;
+    --streg: #3a352d;
+    --accent: #e08a63;
+    --accent-dæmpet: #332721;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--papir);
+  color: var(--blæk);
+  font-family: var(--skrift);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  -webkit-text-size-adjust: 100%;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--skrift-overskrift);
+  line-height: 1.2;
+  font-weight: 600;
+  text-wrap: balance;
+}
+
+h1 {
+  font-size: clamp(2rem, 5vw, 2.75rem);
+  margin: 0 0 0.4em;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin: 2.2em 0 0.6em;
+}
+
+h3 {
+  font-size: 1.1rem;
+  margin: 1.6em 0 0.4em;
+}
+
+a {
+  color: var(--accent);
+  text-underline-offset: 2px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* --- Sidehoved og sidefod ------------------------------------- */
+
+.sidehoved {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: baseline;
+  justify-content: space-between;
+  max-width: var(--bredde);
+  margin: 0 auto;
+  padding: 1.5rem 1.25rem;
+  border-bottom: 1px solid var(--streg);
+}
+
+.mærke {
+  font-family: var(--skrift-overskrift);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--blæk);
+  text-decoration: none;
+}
+
+.sidehoved nav a {
+  font-size: 0.95rem;
+}
+
+main {
+  max-width: var(--bredde);
+  margin: 0 auto;
+  padding: 2.5rem 1.25rem 4rem;
+}
+
+.sidefod {
+  max-width: var(--bredde);
+  margin: 0 auto;
+  padding: 1.5rem 1.25rem 3rem;
+  border-top: 1px solid var(--streg);
+  color: var(--blæk-dæmpet);
+  font-size: 0.9rem;
+}
+
+/* --- Forside -------------------------------------------------- */
+
+.forside-intro {
+  margin-bottom: 2.5rem;
+}
+
+.manchet {
+  color: var(--blæk-dæmpet);
+  font-size: 1.15rem;
+  margin: 0;
+  text-wrap: pretty;
+}
+
+.kort-gitter {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  gap: 1.25rem;
+}
+
+.kort a {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--kort);
+  border: 1px solid var(--streg);
+  border-radius: var(--radius);
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+
+.kort a:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.kort img,
+.kort-billede-mangler {
+  aspect-ratio: 3 / 2;
+  width: 100%;
+  object-fit: cover;
+}
+
+/* Pladsholder indtil der ligger et foto */
+.kort-billede-mangler {
+  display: block;
+  background: linear-gradient(135deg, var(--accent-dæmpet), var(--streg));
+}
+
+.kort-tekst {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  padding: 0.9rem 1rem 1.1rem;
+}
+
+.kort-tekst strong {
+  font-family: var(--skrift-overskrift);
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.kort-beskrivelse {
+  color: var(--blæk-dæmpet);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.kort-tid {
+  color: var(--blæk-dæmpet);
+  font-size: 0.85rem;
+  margin-top: 0.2rem;
+}
+
+.kategori-oversigt {
+  margin-top: 3.5rem;
+}
+
+/* --- Kategorimærkater ----------------------------------------- */
+
+.kategorier {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1.25rem 0 0;
+  padding: 0;
+}
+
+.kategorier a {
+  display: inline-block;
+  padding: 0.2rem 0.7rem;
+  border: 1px solid var(--streg);
+  border-radius: 999px;
+  background: var(--kort);
+  font-size: 0.85rem;
+  text-decoration: none;
+}
+
+.kategorier a:hover {
+  border-color: var(--accent);
+}
+
+/* --- Opskrift ------------------------------------------------- */
+
+.opskrift-hoved .manchet {
+  margin-bottom: 1.5rem;
+}
+
+.fakta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.75rem;
+  margin: 0;
+  padding: 1rem 0;
+  border-top: 1px solid var(--streg);
+  border-bottom: 1px solid var(--streg);
+}
+
+.fakta dt {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--blæk-dæmpet);
+}
+
+.fakta dd {
+  margin: 0.15rem 0 0;
+  font-weight: 600;
+}
+
+.opskrift-billede {
+  margin: 2rem 0;
+}
+
+.opskrift-billede img {
+  border-radius: var(--radius);
+}
+
+.opskrift-billede figcaption {
+  margin-top: 0.6rem;
+  color: var(--blæk-dæmpet);
+  font-size: 0.9rem;
+}
+
+.opskrift-krop {
+  display: grid;
+  gap: 2.5rem;
+  margin-top: 2.5rem;
+}
+
+/* Fra tablet og op står ingredienserne ved siden af fremgangsmåden
+   og følger med ned, mens man scroller. */
+@media (min-width: 55rem) {
+  .opskrift-krop {
+    grid-template-columns: 15rem 1fr;
+    align-items: start;
+  }
+
+  .ingredienser {
+    position: sticky;
+    top: 1.5rem;
+  }
+}
+
+.ingredienser {
+  background: var(--kort);
+  border: 1px solid var(--streg);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.4rem 1.5rem;
+}
+
+.ingredienser h2 {
+  margin: 0 0 0.75rem;
+  font-size: 1.15rem;
+}
+
+.ingredienser h3 {
+  margin: 1.25rem 0 0.4rem;
+  font-size: 0.95rem;
+}
+
+.ingredienser ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.ingredienser li {
+  padding: 0.45rem 0;
+  border-bottom: 1px solid var(--streg);
+  font-size: 0.95rem;
+  line-height: 1.45;
+}
+
+.ingredienser li:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+.fremgangsmåde > :first-child {
+  margin-top: 0;
+}
+
+.fremgangsmåde ol {
+  padding-left: 0;
+  list-style: none;
+  counter-reset: trin;
+}
+
+.fremgangsmåde ol > li {
+  counter-increment: trin;
+  position: relative;
+  padding-left: 2.75rem;
+  margin-bottom: 1.4rem;
+}
+
+.fremgangsmåde ol > li::before {
+  content: counter(trin);
+  position: absolute;
+  left: 0;
+  top: 0.1rem;
+  width: 1.9rem;
+  height: 1.9rem;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--accent-dæmpet);
+  color: var(--accent);
+  font-size: 0.9rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.fremgangsmåde ul {
+  padding-left: 1.2rem;
+}
+
+.fremgangsmåde ul li {
+  margin-bottom: 0.5rem;
+}
+
+.relaterede {
+  margin-top: 3.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--streg);
+}
+
+.relaterede ul {
+  padding-left: 1.2rem;
+}
+
+/* Markdown-lister med tomme linjer imellem får <p> inde i hvert <li>;
+   nulstil margener så tallet flugter med første tekstlinje. */
+.fremgangsmåde li > p:first-child {
+  margin-top: 0;
+}
+
+.fremgangsmåde li > p:last-child {
+  margin-bottom: 0;
+}

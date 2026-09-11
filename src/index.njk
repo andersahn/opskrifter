@@ -1,0 +1,41 @@
+---
+layout: base.njk
+beskrivelse: Samling af opskrifter i metriske mål.
+---
+<div class="forside-intro">
+  <h1>{{ site.navn }}</h1>
+  <p class="manchet">{{ site.undertitel }}</p>
+</div>
+
+<ul class="kort-gitter">
+  {% for opskrift in collections.opskrifter %}
+    <li class="kort">
+      <a href="{{ opskrift.url | url }}">
+        {% if opskrift.data.billede %}
+          <img src="{{ opskrift.data.billede | url }}" alt=""
+               width="1200" height="800" loading="lazy" decoding="async">
+        {% else %}
+          <span class="kort-billede-mangler" aria-hidden="true"></span>
+        {% endif %}
+        <span class="kort-tekst">
+          <strong>{{ opskrift.data.titel }}</strong>
+          {% if opskrift.data.beskrivelse %}
+            <span class="kort-beskrivelse">{{ opskrift.data.beskrivelse }}</span>
+          {% endif %}
+          {% if opskrift.data.tid %}<span class="kort-tid">{{ opskrift.data.tid }}</span>{% endif %}
+        </span>
+      </a>
+    </li>
+  {% endfor %}
+</ul>
+
+{% if collections.kategorier.length %}
+  <section class="kategori-oversigt">
+    <h2>Kategorier</h2>
+    <ul class="kategorier">
+      {% for tag in collections.kategorier %}
+        <li><a href="{{ ('/kategori/' + (tag | slugify) + '/') | url }}">{{ tag }}</a></li>
+      {% endfor %}
+    </ul>
+  </section>
+{% endif %}

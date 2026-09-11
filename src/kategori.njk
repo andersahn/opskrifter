@@ -1,0 +1,33 @@
+---
+layout: base.njk
+pagination:
+  data: collections.kategorier
+  size: 1
+  alias: kategori
+permalink: "/kategori/{{ kategori | slugify }}/"
+eleventyComputed:
+  titel: "{{ kategori }}"
+---
+<div class="forside-intro">
+  <h1>{{ kategori }}</h1>
+  <p class="manchet">Opskrifter i kategorien “{{ kategori }}”.</p>
+</div>
+
+<ul class="kort-gitter">
+  {% for opskrift in collections[kategori] %}
+    <li class="kort">
+      <a href="{{ opskrift.url | url }}">
+        {% if opskrift.data.billede %}
+          <img src="{{ opskrift.data.billede | url }}" alt=""
+               width="1200" height="800" loading="lazy" decoding="async">
+        {% else %}
+          <span class="kort-billede-mangler" aria-hidden="true"></span>
+        {% endif %}
+        <span class="kort-tekst">
+          <strong>{{ opskrift.data.titel }}</strong>
+          {% if opskrift.data.tid %}<span class="kort-tid">{{ opskrift.data.tid }}</span>{% endif %}
+        </span>
+      </a>
+    </li>
+  {% endfor %}
+</ul>
