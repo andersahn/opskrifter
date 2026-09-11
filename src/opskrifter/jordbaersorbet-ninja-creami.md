@@ -13,7 +13,7 @@ ingredienser:
   - 1200 g jordbær, friske eller frosne (3 poser à 400 g)
   - 250 g sukker (op til 300 g hvis bærrene er syrlige)
   - 75 ml citronsaft (5 spsk), saften fra 2-3 økocitroner
-  - 100-150 ml vand eller æblejuice
+  - 100-150 ml vand eller æblejuice, efter smag
   - 1 vaniljestang, flækket på langs
 ---
 
@@ -29,26 +29,34 @@ ingredienser:
 
 3. **Fisk vaniljestængerne op** og kassér dem.
 
-4. Tilsæt citronsaft og vand eller æblejuice, og **blend det hele helt glat.**
-   Jo finere purén er, jo mindre iskrystaller får du efter spinningen.
+4. Tilsæt citronsaft og det meste af vandet eller æblejuicen, og **blend det
+   hele helt glat.** Jo finere purén er, jo mindre iskrystaller får du efter
+   spinningen.
 
-5. **Køl massen helt af.** Den må ikke være lun når den kommer i bøtterne —
+5. **Smag massen til nu.** Det er her væskemængden bliver afgjort, og det er
+   mere fornemmelse end opskrift: er den tyk og meget koncentreret, så spæd med
+   mere juice; smager den fladt sød, så er det citronsaft den mangler.
+
+   Husk at **kulde dæmper både sødme og aroma.** Massen skal smage en anelse for
+   sød og en anelse for kraftig mens den er lun. Rammer du den perfekt i gryden,
+   smager den udvandet som færdig sorbet.
+
+6. **Køl massen helt af.** Den må ikke være lun når den kommer i bøtterne —
    varm masse fryser ujævnt og giver en grynet sorbet.
 
-6. **Fordel i to deluxe-bøtter, og fyld aldrig over MAX-stregen.** Maskinen skal
+7. **Fordel i to deluxe-bøtter, og fyld aldrig over MAX-stregen.** Maskinen skal
    bruge luften over massen til at arbejde; en overfyldt bøtte giver en dårlig
    spinning og kan sætte spaden fast. Bliver der lidt til overs, så pres det
    ikke ned — drik det, eller frys det separat.
 
-7. **Sæt bøtterne plant i fryseren i 24 timer.** Ikke 12, ikke "til i aften".
+8. **Sæt bøtterne plant i fryseren i 24 timer.** Ikke 12, ikke "til i aften".
    Massen skal være frossen helt igennem og have en plan overflade, ellers
    rammer spaden skævt.
 
-8. Sæt bøtten i maskinen og kør programmet **SORBET**.
+9. Sæt bøtten i maskinen og kør programmet **SORBET**.
 
-9. **Er den pulveragtig efter første kørsel, er det normalt.** Lav en fordybning
-   i midten, hæld 1-2 spsk vand eller æblejuice i, og kør **RE-SPIN**. Det er
-   det trin der gør forskellen mellem sne og sorbet.
+10. **Ser den pulveragtig efter første kørsel, er det normalt.** Du bør ikke gøre
+andet end at tage en ske og teste om den er fin.
 
 ## Noter
 
@@ -80,7 +88,7 @@ fylder to deluxe-bøtter, som rummer 710 ml stykket. 800 g var for lidt — det 
 kun op til nederste streg.
 
 Væsken følger ikke helt med op. De 100 ml i grundopskriften er der mest for at få
-blenderen i gang, og med 1200 g bær giver bærrene selv rigeligt. Start ved 100 ml,
-og spæd kun op hvis blenderen kører tungt.
+blenderen i gang, og med 1200 g bær giver bærrene selv rigeligt. Den præcise
+mængde er en smagssag — se trin 5.
 
 Skal du kun lave én bøtte, halverer du hele opskriften.
