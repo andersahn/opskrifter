@@ -1,0 +1,101 @@
+---
+permalink: /sw.js
+eleventyExcludeFromCollections: true
+---
+// Service worker. Genereres af Eleventy, så listen over sider og
+// versionsnummeret altid passer til den byggede side.
+//
+// Strategi:
+//   - Alle sider, CSS og ikoner hentes ned ved installation, så hele
+//     samlingen virker offline fra første besøg.
+//   - Sidevisninger prøver netværket først og falder tilbage til cachen,
+//     så nye opskrifter dukker op med det samme når der er forbindelse.
+//   - Øvrige filer serveres fra cachen og opdateres i baggrunden.
+
+const VERSION = "{{ byggetid }}";
+const CACHE = "opskrifter-" + VERSION;
+const OFFLINE = "{{ '/offline/' | url }}";
+
+const FORUDHENT = [
+  "{{ '/' | url }}",
+  OFFLINE,
+  {%- for side in collections.opskrifter %}
+  "{{ side.url | url }}",
+  {%- endfor %}
+  {%- for tag in collections.kategorier %}
+  "{{ ('/kategori/' + (tag | slugify) + '/') | url }}",
+  {%- endfor %}
+  "{{ '/css/style.css' | url }}",
+  "{{ '/manifest.webmanifest' | url }}",
+  "{{ '/ikoner/ikon.svg' | url }}",
+  "{{ '/ikoner/ikon-192.png' | url }}",
+  "{{ '/ikoner/ikon-512.png' | url }}",
+  "{{ '/ikoner/ikon-maskable-512.png' | url }}",
+  "{{ '/ikoner/apple-touch-icon.png' | url }}",
+];
+
+self.addEventListener("install", (event) => {
+  event.waitUntil(
+    caches
+      .open(CACHE)
+      .then((cache) => cache.addAll(FORUDHENT))
+      .then(() => self.skipWaiting())
+  );
+});
+
+self.addEventListener("activate", (event) => {
+  event.waitUntil(
+    caches
+      .keys()
+      .then((nøgler) =>
+        Promise.all(
+          nøgler
+            .filter((n) => n.startsWith("opskrifter-") && n !== CACHE)
+            .map((n) => caches.delete(n))
+        )
+      )
+      .then(() => self.clients.claim())
+  );
+});
+
+self.addEventListener("fetch", (event) => {
+  const { request } = event;
+  if (request.method !== "GET") return;
+
+  const url = new URL(request.url);
+  if (url.origin !== self.location.origin) return;
+
+  // Sider: netværk først, så cache, så offline-siden.
+  if (request.mode === "navigate") {
+    event.respondWith(
+      fetch(request)
+        .then((svar) => {
+          const kopi = svar.clone();
+          caches.open(CACHE).then((cache) => cache.put(request, kopi));
+          return svar;
+        })
+        .catch(() =>
+          caches
+            .match(request)
+            .then((cached) => cached || caches.match(OFFLINE))
+        )
+    );
+    return;
+  }
+
+  // Alt andet: cache først, opdatér i baggrunden.
+  event.respondWith(
+    caches.match(request).then((cached) => {
+      const hent = fetch(request)
+        .then((svar) => {
+          if (svar.ok) {
+            const kopi = svar.clone();
+            caches.open(CACHE).then((cache) => cache.put(request, kopi));
+          }
+          return svar;
+        })
+        .catch(() => cached);
+      return cached || hent;
+    })
+  );
+});

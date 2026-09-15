@@ -6,6 +6,17 @@
     <title>{% if titel %}{{ titel }} – {{ site.navn }}{% else %}{{ site.navn }}{% endif %}</title>
     {% if beskrivelse %}<meta name="description" content="{{ beskrivelse }}">{% endif %}
     <link rel="stylesheet" href="/css/style.css">
+
+    <!-- PWA: manifest, ikoner og farver til installation på telefonen -->
+    <link rel="manifest" href="/manifest.webmanifest">
+    <link rel="icon" href="/ikoner/ikon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/ikoner/apple-touch-icon.png">
+    <meta name="theme-color" content="#faf7f2" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#1a1816" media="(prefers-color-scheme: dark)">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="{{ site.navn }}">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
   </head>
   <body>
     <header class="sidehoved">
@@ -22,5 +33,11 @@
     <footer class="sidefod">
       <p>{{ site.navn }} — {{ site.undertitel }}</p>
     </footer>
+
+    <script>
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker.register("{{ '/sw.js' | url }}");
+      }
+    </script>
   </body>
 </html>

@@ -1,0 +1,22 @@
+---
+permalink: /manifest.webmanifest
+eleventyExcludeFromCollections: true
+---
+{
+  "name": "{{ site.navn }}",
+  "short_name": "{{ site.navn }}",
+  "description": "{{ site.undertitel }}",
+  "lang": "{{ site.sprog }}",
+  "id": "{{ '/' | url }}",
+  "start_url": "{{ '/' | url }}",
+  "scope": "{{ '/' | url }}",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#faf7f2",
+  "theme_color": "#faf7f2",
+  "icons": [
+    { "src": "{{ '/ikoner/ikon-192.png' | url }}", "sizes": "192x192", "type": "image/png" },
+    { "src": "{{ '/ikoner/ikon-512.png' | url }}", "sizes": "512x512", "type": "image/png" },
+    { "src": "{{ '/ikoner/ikon-maskable-512.png' | url }}", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
