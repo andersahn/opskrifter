@@ -91,6 +91,32 @@ magick mogrify -path src/billeder/ -resize 1200x -quality 82 -format webp raw-fo
 Skabelonen sætter selv `loading="lazy"` og `width`/`height`, så siden ikke
 hopper mens billederne loader.
 
+## Installér som app på telefonen
+
+Siden er en PWA: åbn den i browseren på telefonen og vælg **Føj til
+hjemmeskærm** (Safari: del-knappen → Føj til hjemmeskærm; Chrome: menuen →
+Installér app). Den åbner så uden browserkrom og virker offline.
+
+- `src/manifest.njk` bliver til `manifest.webmanifest` med navn, farver og
+  ikoner.
+- `src/sw.njk` bliver til `sw.js`, en service worker der henter alle sider,
+  CSS og ikoner ned ved installation. Sider hentes netværk-først, så nye
+  opskrifter dukker op med det samme; alt andet serveres fra cachen. Hvert byg
+  får et nyt versionsnummer, så telefonen opdaterer sig selv efter en udgivelse.
+- `src/offline.njk` vises hvis en side ikke er hentet ned og der ikke er net.
+- Ikonerne ligger i `src/ikoner/`. `ikon.svg` er kilden; PNG-udgaverne
+  genereres med ImageMagick:
+
+```bash
+cd src/ikoner
+for s in 192 512; do magick -background none -density 384 ikon.svg -resize ${s}x${s} ikon-$s.png; done
+magick -background none -density 384 ikon.svg -resize 180x180 apple-touch-icon.png
+magick -background none -density 384 ikon.svg -resize 410x410 -gravity center -background '#9a3b1e' -extent 512x512 ikon-maskable-512.png
+```
+
+Alle stier i manifest og service worker går gennem `url`-filtret, så
+`pathPrefix` er med når siden ligger under `brugernavn.github.io/opskrifter/`.
+
 ## Udgivelse på GitHub Pages
 
 1. Opret et repo på GitHub og push koden.
@@ -109,6 +135,10 @@ src/_includes/base.njk      Ydre skabelon: hoved, fod, <head>
 src/_includes/opskrift.njk  Skabelonen for en opskriftsside
 src/index.njk               Forsiden med opskriftskort
 src/kategori.njk            Genererer én side pr. kategori
+src/manifest.njk            Web-manifest til installation som app
+src/sw.njk                  Service worker, offline-cache
+src/offline.njk             Siden der vises uden net
+src/ikoner/                 App-ikoner
 src/opskrifter/             Opskrifterne, én markdown-fil hver
 src/billeder/               Billeder
 src/css/style.css           Al styling, med lys og mørk tilstand

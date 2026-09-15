@@ -18,6 +18,11 @@ export default function (eleventyConfig) {
   // Billeder og CSS kopieres råt over i _site/
   eleventyConfig.addPassthroughCopy("src/billeder");
   eleventyConfig.addPassthroughCopy("src/css");
+  eleventyConfig.addPassthroughCopy("src/ikoner");
+
+  // Tidsstempel for dette byg. Service workeren bruger det som cache-version,
+  // så telefonen henter nye sider ned efter hver udgivelse.
+  eleventyConfig.addGlobalData("byggetid", () => Date.now().toString(36));
 
   // Alle opskrifter, sorteret alfabetisk efter dansk sortering (æ ø å til sidst)
   eleventyConfig.addCollection("opskrifter", (collection) =>
